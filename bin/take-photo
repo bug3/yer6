@@ -1,0 +1,15 @@
+#!/bin/bash
+
+getResolution() {
+    {
+        width=$(lsusb -v | grep -E Width | grep -Eo '[0-9]+' | sort -rn | head -n 1)
+        height=$(lsusb -v | grep -E Height | grep -Eo '[0-9]+' | sort -rn | head -n 1)
+    } &> /dev/null
+
+    echo "$width"x$height
+}
+
+gdate=$(date "+%y-%m-%d_%H-%M-%S")
+path=${1:-"$HOME/Pictures/$gdate.jpg"}
+
+fswebcam -r $(getResolution) --no-banner $path
