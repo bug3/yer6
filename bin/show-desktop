@@ -1,6 +1,6 @@
 #!/bin/bash
 
-status="$(wmctrl -m | grep "showing the desktop" | sed -r 's/(.*)(ON|OFF)/\2/g')"
+status="$(wmctrl -m | grep "showing the desktop" | awk '{print $7}')"
 
 if [[ $status == "ON" ]]; then
     wmctrl -k off
