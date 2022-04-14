@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+getMessage() {
+    gdate=$(date "+%y-%m-%d_%H-%M-%S")
+
+    echo $gdate
+}
+
+notify-send $(getMessage)
