@@ -11,3 +11,6 @@ crontab -l
 
 # Open in editor
 crontab -e
+
+# Exec all crons
+echo "* * * * * find /home/bug3/yer6/crons -type f -executable -exec {} \;" | crontab
