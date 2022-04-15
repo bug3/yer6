@@ -1,0 +1,28 @@
+#!/bin/bash
+
+filename="cron.log"
+
+getMessage() {
+    message="Cron scripts executed"
+    gdate=$(date "+%Y-%m-%d %H:%M:%S")
+
+    echo "$gdate info \"$message\""
+}
+
+getScriptPath() {
+    SCRIPT_PATH="${BASH_SOURCE}"
+
+    while [[ -L "${SCRIPT_PATH}" ]]; do
+        TARGET="$(readlink "${SCRIPT_PATH}")"
+
+        if [[ "${TARGET}" == /* ]]; then
+            SCRIPT_PATH="$TARGET"
+        else
+            SCRIPT_PATH="$(dirname "${SCRIPT_PATH}")/${TARGET}"
+        fi
+    done
+
+    echo $(dirname $(realpath $SCRIPT_PATH))
+}
+
+echo $(getMessage) >> $(getScriptPath)/$filename
