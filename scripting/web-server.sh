@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# A simple web server that does not require installation
 port=8128
 file="index.html"
 contentType="text/html"
