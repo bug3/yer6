@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Append or remove text from a file
 destFile=$1
 textFile=$2
 tempFile=.file.tmp
