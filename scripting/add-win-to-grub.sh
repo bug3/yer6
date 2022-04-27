@@ -22,3 +22,5 @@ elif [[ $1 == "-r" ]]; then
 fi
 
 rm $textFile
+
+sudo update-grub
