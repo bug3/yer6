@@ -14,4 +14,11 @@ menuentry \"Windows\" {
 }"
 
 echo "$winEntry" > $textFile
-sudo bash -c "source <(curl -sL $scriptSrc) $grub40_custom $textFile; appendText"
+
+if [[ $# -eq 0 ]]; then
+    sudo bash -c "source <(curl -sL $scriptSrc) $grub40_custom $textFile; appendText"
+elif [[ $1 == "-r" ]]; then
+    sudo bash -c "source <(curl -sL $scriptSrc) $grub40_custom $textFile; removeText"
+fi
+
+rm $textFile
