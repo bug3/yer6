@@ -12,3 +12,6 @@ menuentry \"Windows\" {
         search --no-floppy --fs-uuid --set $boot_efi_uuid
         chainloader /EFI/Microsoft/Boot/bootmgfw.efi
 }"
+
+echo "$winEntry" > $textFile
+sudo bash -c "source <(curl -sL $scriptSrc) $grub40_custom $textFile; appendText"
