@@ -6,7 +6,7 @@ boot_efi_uuid=$(sudo lsblk -f -o UUID,MOUNTPOINT | grep /boot/efi | awk '{ print
 scriptSrc="https://github.com/bug3/yer6/raw/master/scripting/append-remove.sh"
 
 winEntry="
-menuentry \"Windows\" {
+menuentry \"Windows\" --class windows {
         insmod part_gpt
         insmod fat
         search --no-floppy --fs-uuid --set $boot_efi_uuid
